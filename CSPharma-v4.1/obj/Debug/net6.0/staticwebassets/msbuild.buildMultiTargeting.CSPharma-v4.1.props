@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\CSPharma-v4.1.props" />
+</Project>
