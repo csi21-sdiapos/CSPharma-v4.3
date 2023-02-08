@@ -9,6 +9,19 @@
 
 <div class="body">
     <h1>Index</h1>
+    
+    <br />
+
+    <input type="text" id="searchId" placeholder="buscar por ID" />
+    <input type="text" id="searchCodPedido" placeholder="buscar por cod Pedido" />
+    <input type="text" id="searchCodLinea" placeholder="buscar por cod linea" />
+    <input type="text" id="searchDesEstadoEnvio" placeholder="buscar por cod estado envío" />
+    <input type="text" id="searchDesEstadoPago" placeholder="buscar por cod estado pago" />
+    <input type="text" id="searchDesEstadoDevolucion" placeholder="buscar por cod estado devolución" />
+
+
+    <br />
+    <br />
 
     <p>
         <a asp-page="Create">Create New</a>
@@ -21,6 +34,9 @@
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.TdcTchEstadoPedidos[0].MdDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TdcTchEstadoPedidos[0].Id)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.TdcTchEstadoPedidos[0].CodPedido)
@@ -51,6 +67,9 @@
                         @Html.DisplayFor(modelItem => item.MdDate)
                     </td>
                     <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
                         @Html.DisplayFor(modelItem => item.CodPedido)
                     </td>
                     <td>
@@ -75,3 +94,117 @@
         </tbody>
     </table>
 </div>
+
+<script>
+    $("#searchId").on("keyup", function () {
+        var inputSearch = $(this).val();
+
+        $("table tr").each(function (results) {
+            if (results !== 0) {
+                var search = $(this).find("td:nth-child(3)").text(); // nth-child(3) --> Id
+
+                if (search.indexOf(inputSearch) !== 0 && search.toLowerCase().indexOf(inputSearch.toLowerCase()) < 0) {
+                    $(this).hide();
+                }
+                else {
+                    $(this).show();
+                }
+            }
+        });
+    });
+</script>
+
+<script>
+    $("#searchCodPedido").on("keyup", function () {
+        var inputSearch = $(this).val();
+
+        $("table tr").each(function (results) {
+            if (results !== 0) {
+                var search = $(this).find("td:nth-child(4)").text(); // nth-child(4) --> Cod Pedido
+
+                if (search.indexOf(inputSearch) !== 0 && search.toLowerCase().indexOf(inputSearch.toLowerCase()) < 0) {
+                    $(this).hide();
+                }
+                else {
+                    $(this).show();
+                }
+            }
+        });
+    });
+</script>
+
+<script>
+    $("#searchCodLinea").on("keyup", function () {
+        var inputSearch = $(this).val();
+
+        $("table tr").each(function (results) {
+            if (results !== 0) {
+                var search = $(this).find("td:nth-child(5)").text(); // nth-child(5) --> Cod Linea
+
+                if (search.indexOf(inputSearch) !== 0 && search.toLowerCase().indexOf(inputSearch.toLowerCase()) < 0) {
+                    $(this).hide();
+                }
+                else {
+                    $(this).show();
+                }
+            }
+        });
+    });
+</script>
+
+<script>
+    $("#searchDesEstadoEnvio").on("keyup", function () {
+        var inputSearch = $(this).val();
+
+        $("table tr").each(function (results) {
+            if (results !== 0) {
+                var search = $(this).find("td:nth-child(6)").text(); // nth-child(6) --> DesEstadoEnvio
+
+                if (search.indexOf(inputSearch) !== 0 && search.toLowerCase().indexOf(inputSearch.toLowerCase()) < 0) {
+                    $(this).hide();
+                }
+                else {
+                    $(this).show();
+                }
+            }
+        });
+    });
+</script>
+
+<script>
+    $("#searchDesEstadoPago").on("keyup", function () {
+        var inputSearch = $(this).val();
+
+        $("table tr").each(function (results) {
+            if (results !== 0) {
+                var search = $(this).find("td:nth-child(7)").text(); // nth-child(7) --> DesEstadoPago
+
+                if (search.indexOf(inputSearch) !== 0 && search.toLowerCase().indexOf(inputSearch.toLowerCase()) < 0) {
+                    $(this).hide();
+                }
+                else {
+                    $(this).show();
+                }
+            }
+        });
+    });
+</script>
+
+<script>
+    $("#searchDesEstadoDevolucion").on("keyup", function () {
+        var inputSearch = $(this).val();
+
+        $("table tr").each(function (results) {
+            if (results !== 0) {
+                var search = $(this).find("td:nth-child(8)").text(); // nth-child(8) --> DesEstadoDevolucion
+
+                if (search.indexOf(inputSearch) !== 0 && search.toLowerCase().indexOf(inputSearch.toLowerCase()) < 0) {
+                    $(this).hide();
+                }
+                else {
+                    $(this).show();
+                }
+            }
+        });
+    });
+</script>

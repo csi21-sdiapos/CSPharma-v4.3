@@ -289,16 +289,16 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Id": "C:\\Users\\Sergio DC\\vs2022-workspace\\CSPharma-v4.3\\CSPharma-v4.1\\wwwroot\\lib\\jquery\\dist\\jquery.js",
-      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+      "Id": "C:\\Users\\Sergio DC\\vs2022-workspace\\CSPharma-v4.3\\CSPharma-v4.1\\wwwroot\\lib\\jquery\\dist\\jquery-3.6.3.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery-3.6.3.js"
     },
     {
-      "Id": "C:\\Users\\Sergio DC\\vs2022-workspace\\CSPharma-v4.3\\CSPharma-v4.1\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
-      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+      "Id": "C:\\Users\\Sergio DC\\vs2022-workspace\\CSPharma-v4.3\\CSPharma-v4.1\\wwwroot\\lib\\jquery\\dist\\jquery-3.6.3.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery-3.6.3.min.js"
     },
     {
-      "Id": "C:\\Users\\Sergio DC\\vs2022-workspace\\CSPharma-v4.3\\CSPharma-v4.1\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
-      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+      "Id": "C:\\Users\\Sergio DC\\vs2022-workspace\\CSPharma-v4.3\\CSPharma-v4.1\\wwwroot\\lib\\jquery\\dist\\jquery-3.6.3.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery-3.6.3.min.map"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.CSPharma-v4.1.Microsoft.AspNetCore.StaticWebAssets.props",

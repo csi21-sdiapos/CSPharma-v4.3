@@ -27,6 +27,7 @@ namespace CSPharma_v4._1.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager; // --> https://learn.microsoft.com/en-us/answers/questions/623030/assign-user-to-role-during-registration
         private readonly IUserStore<ApplicationUser> _userStore;
         private readonly IUserEmailStore<ApplicationUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
@@ -34,12 +35,14 @@ namespace CSPharma_v4._1.Areas.Identity.Pages.Account
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
+            RoleManager<IdentityRole> roleManager,  // --> https://learn.microsoft.com/en-us/answers/questions/623030/assign-user-to-role-during-registration
             IUserStore<ApplicationUser> userStore,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender)
         {
             _userManager = userManager;
+            _roleManager = roleManager;
             _userStore = userStore;
             _emailStore = GetEmailStore();
             _signInManager = signInManager;
@@ -138,6 +141,16 @@ namespace CSPharma_v4._1.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("User created a new account with password.");
 
+                /******************************** to assign default role ************************************/
+                // https://learn.microsoft.com/en-us/answers/questions/623030/assign-user-to-role-during-registration
+                  
+                    var defaultRole = _roleManager.FindByNameAsync("Users").Result;
+
+                    if (defaultRole != null)
+                    {
+                        await _userManager.AddToRoleAsync(user, defaultRole.Name);
+                    }
+                /*********************************************************************************************/
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));

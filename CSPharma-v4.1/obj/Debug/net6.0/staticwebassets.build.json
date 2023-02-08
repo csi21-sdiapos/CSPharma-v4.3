@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "RvvzAerdsImAPThp8wW4c52BqXHrHrRLh8k1f1CspHQ=",
+  "Hash": "OkbFukhwFD9O9hjdNfx/YoR96BVf0Ot4UUTvOysuDnM=",
   "Source": "CSPharma-v4.1",
   "BasePath": "_content/CSPharma-v4.1",
   "Mode": "Default",
@@ -2125,12 +2125,12 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\LICENSE"
     },
     {
-      "Identity": "C:\\Users\\Sergio DC\\vs2022-workspace\\CSPharma-v4.3\\CSPharma-v4.1\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Identity": "C:\\Users\\Sergio DC\\vs2022-workspace\\CSPharma-v4.3\\CSPharma-v4.1\\wwwroot\\lib\\jquery\\dist\\jquery-3.6.3.js",
       "SourceId": "CSPharma-v4.1",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Sergio DC\\vs2022-workspace\\CSPharma-v4.3\\CSPharma-v4.1\\wwwroot\\",
       "BasePath": "_content/CSPharma-v4.1",
-      "RelativePath": "lib/jquery/dist/jquery.js",
+      "RelativePath": "lib/jquery/dist/jquery-3.6.3.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -2139,15 +2139,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.js"
+      "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery-3.6.3.js"
     },
     {
-      "Identity": "C:\\Users\\Sergio DC\\vs2022-workspace\\CSPharma-v4.3\\CSPharma-v4.1\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Identity": "C:\\Users\\Sergio DC\\vs2022-workspace\\CSPharma-v4.3\\CSPharma-v4.1\\wwwroot\\lib\\jquery\\dist\\jquery-3.6.3.min.js",
       "SourceId": "CSPharma-v4.1",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Sergio DC\\vs2022-workspace\\CSPharma-v4.3\\CSPharma-v4.1\\wwwroot\\",
       "BasePath": "_content/CSPharma-v4.1",
-      "RelativePath": "lib/jquery/dist/jquery.min.js",
+      "RelativePath": "lib/jquery/dist/jquery-3.6.3.min.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -2156,15 +2156,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.js"
+      "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery-3.6.3.min.js"
     },
     {
-      "Identity": "C:\\Users\\Sergio DC\\vs2022-workspace\\CSPharma-v4.3\\CSPharma-v4.1\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Identity": "C:\\Users\\Sergio DC\\vs2022-workspace\\CSPharma-v4.3\\CSPharma-v4.1\\wwwroot\\lib\\jquery\\dist\\jquery-3.6.3.min.map",
       "SourceId": "CSPharma-v4.1",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Sergio DC\\vs2022-workspace\\CSPharma-v4.3\\CSPharma-v4.1\\wwwroot\\",
       "BasePath": "_content/CSPharma-v4.1",
-      "RelativePath": "lib/jquery/dist/jquery.min.map",
+      "RelativePath": "lib/jquery/dist/jquery-3.6.3.min.map",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -2173,7 +2173,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.map"
+      "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery-3.6.3.min.map"
     },
     {
       "Identity": "C:\\Users\\Sergio DC\\vs2022-workspace\\CSPharma-v4.3\\CSPharma-v4.1\\wwwroot\\lib\\jquery\\LICENSE.txt",

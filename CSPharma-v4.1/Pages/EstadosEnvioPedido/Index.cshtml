@@ -9,10 +9,19 @@
 
 <div class="body">
     <h1>Index</h1>
+    
+    <br />
+
+    <input type="text" id="searchId" placeholder="buscar por ID" />
+    <input type="text" id="searchDesEstadoEnvio" placeholder="buscar por DescripcionEstadoEnvio" />
+
+    <br />
+    <br />
 
     <p>
         <a asp-page="Create">Create New</a>
     </p>
+
     <table class="table">
         <thead>
             <tr>
@@ -57,3 +66,44 @@
         </tbody>
     </table>
 </div>
+
+<script src="~/lib/jquery/dist/jquery-3.6.3.min.js" asp-append-version="true"></script>
+@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>*@
+
+<script>
+    $("#searchId").on("keyup", function () {
+        var inputSearch = $(this).val();
+
+        $("table tr").each(function (results) {
+            if (results !== 0) {
+                var search = $(this).find("td:nth-child(3)").text(); // nth-child(3) --> Id
+
+                if (search.indexOf(inputSearch) !== 0 && search.toLowerCase().indexOf(inputSearch.toLowerCase()) < 0) {
+                    $(this).hide();
+                }
+                else {
+                    $(this).show();
+                }
+            }
+        });
+    });
+</script>
+
+<script>
+    $("#searchDesEstadoEnvio").on("keyup", function () {
+        var inputSearch = $(this).val();
+
+        $("table tr").each(function (results) {
+            if (results !== 0) {
+                var search = $(this).find("td:nth-child(4)").text(); // nth-child(4) --> DesEstadoEnvio
+
+                if (search.indexOf(inputSearch) !== 0 && search.toLowerCase().indexOf(inputSearch.toLowerCase()) < 0) {
+                    $(this).hide();
+                }
+                else {
+                    $(this).show();
+                }
+            }
+        });
+    });
+</script>
