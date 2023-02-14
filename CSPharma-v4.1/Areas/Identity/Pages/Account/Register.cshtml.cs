@@ -20,6 +20,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using System.ComponentModel;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Rewrite;
 
 namespace CSPharma_v4._1.Areas.Identity.Pages.Account
 {
@@ -141,16 +144,41 @@ namespace CSPharma_v4._1.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("User created a new account with password.");
 
-                /******************************** to assign default role ************************************/
-                // https://learn.microsoft.com/en-us/answers/questions/623030/assign-user-to-role-during-registration
-                  
-                    var defaultRole = _roleManager.FindByNameAsync("Users").Result;
+                    /******************************** to assign default role ************************************/
+                    // forma 1 --> no funciona: El rol USERS no se encuentra en la bbdd
+                    /*
+                    var defaultRole = _roleManager.FindByIdAsync("2").Result;
 
                     if (defaultRole != null)
                     {
                         await _userManager.AddToRoleAsync(user, defaultRole.Name);
                     }
-                /*********************************************************************************************/
+                    */
+
+                    // forma 1 --> no funciona: encuentra el rol pero no lo asigna al usuario
+                    /*
+                    var roleExist = await _roleManager.RoleExistsAsync("Users");
+                    
+                    if (roleExist)
+                    {
+                        await _userManager.AddToRoleAsync(user, "Users");
+                    }
+                    */
+
+                    // forma 3 --> SÍ funciona: primero creamos el rol y después lo asignamos
+                    // explicación: para que RoleManager identifique los roles de la bbdd,
+                    // es necesario que sea él mismo quien los cree, porque si los creo yo manualmente, ya no se reconocen
+                    // https://stackoverflow.com/questions/70559504/invalidoperationexception-role-admin-does-not-exist
+                    var roleExist = await _roleManager.RoleExistsAsync("Users");
+                    
+                    if (!roleExist)
+                    {
+                        await _roleManager.CreateAsync(new IdentityRole("Users"));
+                    }
+
+                    await _userManager.AddToRoleAsync(user, "Users");
+
+                    /*********************************************************************************************/
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
