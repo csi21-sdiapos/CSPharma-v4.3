@@ -20,7 +20,7 @@ namespace CSPharma_v4._1.Pages.LineasDistribucion
         }
 
         [BindProperty]
-      public TdcCatLineasDistribucion TdcCatLineasDistribucion { get; set; }
+        public TdcCatLineasDistribucion TdcCatLineasDistribucion { get; set; }
 
         public async Task<IActionResult> OnGetAsync(string id)
         {

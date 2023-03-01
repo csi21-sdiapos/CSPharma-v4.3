@@ -51,6 +51,22 @@
                 </li>
             }
 
+            @if (User.IsInRole("Administrators"))
+            {
+                <li>
+                    <ul style="list-style: none;">
+                        <li>
+                            <a 
+                                asp-page="/GestionUsuarios/Index"
+                                style="color: #000000; font-size: 1.1rem; font-weight: 500; padding: 5px 0; margin: 0px 30px; transition: all .50s ease; text-decoration: none; list-style: none;"
+                            >
+                                Usuarios
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            }
+
             @if (User.Identity.IsAuthenticated)
             {
                 <li class="dropdown">

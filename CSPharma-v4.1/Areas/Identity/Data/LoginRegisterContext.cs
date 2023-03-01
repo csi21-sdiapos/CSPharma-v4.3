@@ -16,6 +16,8 @@ public class LoginRegisterContext : IdentityDbContext<ApplicationUser>
     {
     }
 
+    public virtual DbSet<ApplicationUser> ApplicationUserSet { get; set; }
+
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);

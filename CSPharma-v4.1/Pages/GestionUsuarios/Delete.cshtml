@@ -1,0 +1,51 @@
+﻿@page
+@model CSPharma_v4._1.Pages.GestionUsuarios.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+<div class="body">
+    <h1>Delete</h1>
+
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>ApplicationUser</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ApplicationUser.Id)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ApplicationUser.Id)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ApplicationUser.UserName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ApplicationUser.UserName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ApplicationUser.Email)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ApplicationUser.Email)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ApplicationUser.PhoneNumber)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ApplicationUser.PhoneNumber)
+            </dd>
+        </dl>
+
+        <form method="post">
+            <input type="hidden" asp-for="ApplicationUser.Id" />
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            <a asp-page="./Index">Back to List</a>
+        </form>
+    </div>
+
+</div>
