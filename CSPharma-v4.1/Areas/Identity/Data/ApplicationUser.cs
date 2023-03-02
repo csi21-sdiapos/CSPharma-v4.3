@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using CSPharma_v4._1.Models;
 using Microsoft.AspNetCore.Identity;
 
 namespace CSPharma_v4._1.Areas.Identity.Data;

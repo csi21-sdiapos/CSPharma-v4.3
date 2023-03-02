@@ -5,6 +5,7 @@ using CSPharma_v4._1_DAL.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
 using System.Data;
+using CSPharma_v4._1.Repositories.Interfaces;
 
 namespace CSPharma_v4._1.Pages.GestionUsuarios
 {

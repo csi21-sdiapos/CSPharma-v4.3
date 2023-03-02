@@ -2,6 +2,8 @@ using CSPharma_v4._1_DAL.DataContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using CSPharma_v4._1.Areas.Identity.Data;
+using CSPharma_v4._1.Repositories.Interfaces;
+using CSPharma_v4._1.Repositories.Implementations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,6 +44,8 @@ builder.Services.AddAuthentication()
         googleOptions.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
     });
 
+AddScope();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -63,3 +67,11 @@ app.UseAuthorization();
 app.MapRazorPages();
 
 app.Run();
+
+
+void AddScope()
+{
+    builder.Services.AddScoped<IUserRepository, UserRepository>();
+    builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+    builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+}
