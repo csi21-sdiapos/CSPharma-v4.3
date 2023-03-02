@@ -66,6 +66,11 @@ namespace CSPharma_v4._1.Pages.GestionUsuarios
 
             var userRolesInDb = await _signInManager.UserManager.GetRolesAsync(user);
 
+            //Loop through the roles in ViewModel
+            //Check if the Role is Assigned In DB
+            //If Assigned -> Do Nothing
+            //If Not Assigned -> Add Role
+            // note if we are assigning and de-assigning probably tens or hundreds rows then it will have a significant database delay and for this reason we are going to use lists and we will assign and de-assign all rows at once at the end
 
             var rolesToAdd = new List<string>();
             var rolesToRemove = new List<string>();
