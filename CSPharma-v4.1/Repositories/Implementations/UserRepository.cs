@@ -22,5 +22,13 @@ namespace CSPharma_v4._1.Repositories.Implementations
         {
             return _loginRegisterContext.Users.FirstOrDefault(u => u.Id == id);
         }
+
+        public ApplicationUser UpdateUser(ApplicationUser user)
+        {
+            _loginRegisterContext.Update(user);
+            _loginRegisterContext.SaveChanges();
+
+            return user;
+        }
     }
 }

@@ -7,5 +7,7 @@ namespace CSPharma_v4._1.Repositories.Interfaces
         ICollection<ApplicationUser> GetUsers();
 
         ApplicationUser GetUser(string id);
+
+        ApplicationUser UpdateUser(ApplicationUser user);
     }
 }
