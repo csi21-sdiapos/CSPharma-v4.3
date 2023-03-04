@@ -33,7 +33,19 @@ namespace CSPharma_v4._1.Pages.GestionUsuarios
             var roles = _unitOfWork.Role.GetRoles();
 
             var userRoles = await _signInManager.UserManager.GetRolesAsync(user);
-           
+          
+        /*
+            var roleItems = new List<SelectListItem>();
+
+            foreach (var role in roles) 
+            {
+                var hasRole = userRoles.Any(ur => ur.Contains(role.Name));
+
+                roleItems.Add(new SelectListItem(role.Name, role.Id, hasRole));
+            }
+        */
+
+            // misma función que el var roleItems anterior, pero refactorizado para más legibilidad
             var roleItems = roles.Select(role =>
                 new SelectListItem(
                     role.Name,
@@ -66,10 +78,10 @@ namespace CSPharma_v4._1.Pages.GestionUsuarios
 
             var userRolesInDb = await _signInManager.UserManager.GetRolesAsync(user);
 
-            //Loop through the roles in ViewModel
-            //Check if the Role is Assigned In DB
-            //If Assigned -> Do Nothing
-            //If Not Assigned -> Add Role
+            // Loop through the roles in ViewModel
+            // Check if the Role is Assigned In DB
+            // If Assigned -> Do Nothing
+            // If Not Assigned -> Add Role
             // note if we are assigning and de-assigning probably tens or hundreds rows then it will have a significant database delay and for this reason we are going to use lists and we will assign and de-assign all rows at once at the end
 
             var rolesToAdd = new List<string>();
