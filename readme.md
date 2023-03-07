@@ -26,6 +26,11 @@
     - [3.3.1. GestionUsuarios --\> Edit.cshtml.cs](#331-gestionusuarios----editcshtmlcs)
     - [3.3.2. GestionUsuarios --\> Edit.cshtml](#332-gestionusuarios----editcshtml)
 - [Prueba de Ejecución 3 - CRUD de usuarios y Gestión de Roles](#prueba-de-ejecución-3---crud-de-usuarios-y-gestión-de-roles)
+- [Webgrafía y Enlaces de Interés](#webgrafía-y-enlaces-de-interés)
+  - [Ajax live search bar filter records dynamically with jquery](#ajax-live-search-bar-filter-records-dynamically-with-jquery)
+  - [How to create roles in ASP.NET Core and assign them to users](#how-to-create-roles-in-aspnet-core-and-assign-them-to-users)
+  - [CRUD de usuarios y edición de roles](#crud-de-usuarios-y-edición-de-roles)
+  - [Implementación del repositorio y los patrones de unidad de trabajo en una aplicación MVC de ASP.NET](#implementación-del-repositorio-y-los-patrones-de-unidad-de-trabajo-en-una-aplicación-mvc-de-aspnet)
 
 
 ## Introducción
@@ -749,3 +754,21 @@ public class EditModel : PageModel
 # Prueba de Ejecución 3 - CRUD de usuarios y Gestión de Roles
 
 [Prueba de Ejecución 3](https://user-images.githubusercontent.com/91122596/222569372-ca9de909-2e52-404e-9e82-a82a13d95d2d.mp4)
+
+# Webgrafía y Enlaces de Interés
+
+## Ajax live search bar filter records dynamically with jquery
+
+https://www.youtube.com/watch?v=5QR4e41xr6U&t=804s&ab_channel=HarithaComputers%26Technology
+
+## How to create roles in ASP.NET Core and assign them to users
+
+https://stackoverflow.com/questions/70559504/invalidoperationexception-role-admin-does-not-exist
+
+## CRUD de usuarios y edición de roles
+
+https://www.youtube.com/watch?v=A1Qjg4B0VnQ&ab_channel=ISeeSharp
+
+## Implementación del repositorio y los patrones de unidad de trabajo en una aplicación MVC de ASP.NET
+
+https://learn.microsoft.com/es-es/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application#the-repository-and-unit-of-work-patterns
