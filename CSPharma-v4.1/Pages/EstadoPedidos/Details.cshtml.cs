@@ -19,24 +19,33 @@ namespace CSPharma_v4._1.Pages.EstadoPedidos
             _context = context;
         }
 
-      public TdcTchEstadoPedidos TdcTchEstadoPedidos { get; set; }
+        // Property to hold the details of a TdcTchEstadoPedidos object
+        public TdcTchEstadoPedidos TdcTchEstadoPedidos { get; set; }
 
+
+        // Method to retrieve the details of a TdcTchEstadoPedidos object with the given id
         public async Task<IActionResult> OnGetAsync(int? id)
         {
+            // Check if id or _context.TdcTchEstadoPedidos is null, if yes return NotFound page
             if (id == null || _context.TdcTchEstadoPedidos == null)
             {
                 return NotFound();
             }
 
+            // Find the TdcTchEstadoPedidos object with the given id
             var tdctchestadopedidos = await _context.TdcTchEstadoPedidos.FirstOrDefaultAsync(m => m.Id == id);
+
+            // If the object is not found, return NotFound page
             if (tdctchestadopedidos == null)
             {
                 return NotFound();
             }
-            else 
+            else // Otherwise, set the TdcTchEstadoPedidos property to the found object 
             {
                 TdcTchEstadoPedidos = tdctchestadopedidos;
             }
+
+            // Return the details page with the TdcTchEstadoPedidos object
             return Page();
         }
     }

@@ -125,50 +125,38 @@ namespace CSPharma_v4._1.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
 
+
+        // The method for registering a new user.
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
+            // If returnUrl is null, set it to the root of the application
             returnUrl ??= Url.Content("~/");
+
+            // Get a list of external authentication schemes
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+
+            // If the model state is valid, attempt to create a new user
             if (ModelState.IsValid)
             {
+                // Create a new user object
                 var user = CreateUser();
 
                 //user.UsuarioNombre = Input.UsuarioNombre;
                 //user.UsuarioApellidos = Input.UsuarioApellidos;
 
+                // Set the user's email and username
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
+
+                // Attempt to create the user with the specified password
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
                 {
+                    // Log that the user has been created
                     _logger.LogInformation("User created a new account with password.");
 
-                    /******************************** to assign default role ************************************/
-                    // forma 1 --> no funciona: El rol USERS no se encuentra en la bbdd
-                    /*
-                    var defaultRole = _roleManager.FindByIdAsync("2").Result;
-
-                    if (defaultRole != null)
-                    {
-                        await _userManager.AddToRoleAsync(user, defaultRole.Name);
-                    }
-                    */
-
-                    // forma 1 --> no funciona: encuentra el rol pero no lo asigna al usuario
-                    /*
-                    var roleExist = await _roleManager.RoleExistsAsync("Users");
-                    
-                    if (roleExist)
-                    {
-                        await _userManager.AddToRoleAsync(user, "Users");
-                    }
-                    */
-
-                    // forma 3 --> SÍ funciona: primero creamos el rol y después lo asignamos
-                    // explicación: para que RoleManager identifique los roles de la bbdd,
-                    // es necesario que sea él mismo quien los cree, porque si los creo yo manualmente, ya no se reconocen
-                    // https://stackoverflow.com/questions/70559504/invalidoperationexception-role-admin-does-not-exist
+                    // Check if the "Users" role exists, and create it if it doesn't
                     var roleExist = await _roleManager.RoleExistsAsync("Users");
                     
                     if (!roleExist)
@@ -176,12 +164,15 @@ namespace CSPharma_v4._1.Areas.Identity.Pages.Account
                         await _roleManager.CreateAsync(new IdentityRole("Users"));
                     }
 
+                    // Add the user to the "Users" role
                     await _userManager.AddToRoleAsync(user, "Users");
 
-                    /*********************************************************************************************/
+                    // Generate an email confirmation token and encode it
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+
+                    // Construct a confirmation URL and send an email to the user
                     var callbackUrl = Url.Page(
                         "/Account/ConfirmEmail",
                         pageHandler: null,
@@ -191,46 +182,55 @@ namespace CSPharma_v4._1.Areas.Identity.Pages.Account
                     await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
+                    // If the application requires confirmed accounts, redirect to the confirmation page
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
                         return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
                     }
-                    else
+                    else // Otherwise, sign in the user and redirect to the specified return URL
                     {
                         await _signInManager.SignInAsync(user, isPersistent: false);
                         return LocalRedirect(returnUrl);
                     }
                 }
+                // If the creation of the user failed, add each error to the model state
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
-
             // If we got this far, something failed, redisplay form
             return Page();
         }
 
+
+        // This method creates a new instance of the ApplicationUser class, which is used to represent a user in the application
         private ApplicationUser CreateUser()
         {
             try
             {
+                // The method uses the Activator.CreateInstance method to create a new instance of the class
                 return Activator.CreateInstance<ApplicationUser>();
             }
             catch
             {
+                // If the creation fails, the method throws an exception with a message explaining the possible causes of the failure
                 throw new InvalidOperationException($"Can't create an instance of '{nameof(ApplicationUser)}'. " +
                     $"Ensure that '{nameof(ApplicationUser)}' is not an abstract class and has a parameterless constructor, or alternatively " +
                     $"override the register page in /Areas/Identity/Pages/Account/Register.cshtml");
             }
         }
 
+
+        // This method returns the user email store associated with the current user manager instance
         private IUserEmailStore<ApplicationUser> GetEmailStore()
         {
+            // If the user manager does not support email, an exception is thrown with a message indicating that the default UI requires a user store with email support
             if (!_userManager.SupportsUserEmail)
             {
                 throw new NotSupportedException("The default UI requires a user store with email support.");
             }
+            // The method returns the user store object cast to IUserEmailStore<ApplicationUser>
             return (IUserEmailStore<ApplicationUser>)_userStore;
         }
     }

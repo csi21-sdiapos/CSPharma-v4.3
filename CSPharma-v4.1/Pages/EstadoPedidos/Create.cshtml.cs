@@ -19,30 +19,37 @@ namespace CSPharma_v4._1.Pages.EstadoPedidos
             _context = context;
         }
 
+
+        // Returns the page for creating a new TdcTchEstadoPedidos entity
         public IActionResult OnGet()
         {
-        ViewData["CodEstadoDevolucion"] = new SelectList(_context.TdcCatEstadosDevolucionPedidos, "CodEstadoDevolucion", "CodEstadoDevolucion");
-        ViewData["CodEstadoEnvio"] = new SelectList(_context.TdcCatEstadosEnvioPedidos, "CodEstadoEnvio", "CodEstadoEnvio");
-        ViewData["CodEstadoPago"] = new SelectList(_context.TdcCatEstadosPagoPedidos, "CodEstadoPago", "CodEstadoPago");
-        ViewData["CodLinea"] = new SelectList(_context.TdcCatLineasDistribucions, "CodLinea", "CodLinea");
+            // Populates the select lists for related entities
+            ViewData["CodEstadoDevolucion"] = new SelectList(_context.TdcCatEstadosDevolucionPedidos, "CodEstadoDevolucion", "CodEstadoDevolucion");
+            ViewData["CodEstadoEnvio"] = new SelectList(_context.TdcCatEstadosEnvioPedidos, "CodEstadoEnvio", "CodEstadoEnvio");
+            ViewData["CodEstadoPago"] = new SelectList(_context.TdcCatEstadosPagoPedidos, "CodEstadoPago", "CodEstadoPago");
+            ViewData["CodLinea"] = new SelectList(_context.TdcCatLineasDistribucions, "CodLinea", "CodLinea");
+            
             return Page();
         }
 
         [BindProperty]
         public TdcTchEstadoPedidos TdcTchEstadoPedidos { get; set; }
-        
 
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
+
+        // Saves the new entity to the database
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid)
+            // Checks if the model state is valid
+            if (!ModelState.IsValid)
             {
                 return Page();
             }
 
+            // Adds the new entity to the data context and saves changes
             _context.TdcTchEstadoPedidos.Add(TdcTchEstadoPedidos);
             await _context.SaveChangesAsync();
 
+            // Redirects to the index page for the entity
             return RedirectToPage("./Index");
         }
     }

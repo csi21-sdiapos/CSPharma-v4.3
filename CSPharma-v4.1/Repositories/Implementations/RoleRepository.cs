@@ -8,11 +8,13 @@ namespace CSPharma_v4._1.Repositories.Implementations
     {
         private readonly LoginRegisterContext _loginRegisterContext;
 
+        // Constructor to inject LoginRegisterContext
         public RoleRepository(LoginRegisterContext loginRegisterContext)
         {
             _loginRegisterContext = loginRegisterContext;
         }
 
+        // Returns a collection of all roles in the database
         public ICollection<IdentityRole> GetRoles()
         {
             return _loginRegisterContext.Roles.ToList();

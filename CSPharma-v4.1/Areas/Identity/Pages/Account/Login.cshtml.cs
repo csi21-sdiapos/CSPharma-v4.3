@@ -85,56 +85,69 @@ namespace CSPharma_v4._1.Areas.Identity.Pages.Account
             public bool RememberMe { get; set; }
         }
 
+
+        // This method handles the HTTP GET request for the login page
         public async Task OnGetAsync(string returnUrl = null)
         {
+            // The method first checks whether the ErrorMessage property is not null or empty, and if so, adds an error message to the ModelState dictionary
             if (!string.IsNullOrEmpty(ErrorMessage))
             {
                 ModelState.AddModelError(string.Empty, ErrorMessage);
             }
 
+            // The returnUrl parameter is set to the specified value or to the root path if the parameter is null or empty
             returnUrl ??= Url.Content("~/");
 
             // Clear the existing external cookie to ensure a clean login process
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
+            // The method retrieves the external authentication schemes supported by the application and stores them in the ExternalLogins property
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
 
+            // The ReturnUrl property is set to the value of the returnUrl parameter
             ReturnUrl = returnUrl;
         }
 
+
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
+            // Set the return URL if not already provided
             returnUrl ??= Url.Content("~/");
 
+            // Get the list of external authentication schemes
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
 
             if (ModelState.IsValid)
             {
-                // This doesn't count login failures towards account lockout
-                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
+                // Attempt to sign in the user using the provided email and password
+                // lockoutOnFailure: false means the account will not be locked out after a number of login attempts
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
+                    // If login is successful, redirect the user to the return URL
                     _logger.LogInformation("User logged in.");
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
                 {
+                    // If two-factor authentication is required, redirect the user to the login with 2fa page
                     return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });
                 }
                 if (result.IsLockedOut)
                 {
+                    // If the user account is locked out, redirect the user to the lockout page
                     _logger.LogWarning("User account locked out.");
                     return RedirectToPage("./Lockout");
                 }
                 else
                 {
+                    // If login is unsuccessful, add an error message to the model state and redisplay the login form
                     ModelState.AddModelError(string.Empty, "Invalid login attempt.");
                     return Page();
                 }
             }
 
-            // If we got this far, something failed, redisplay form
+            // If the model state is not valid, redisplay the login form
             return Page();
         }
     }
