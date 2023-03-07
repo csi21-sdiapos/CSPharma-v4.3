@@ -12,7 +12,7 @@
 
     <h4>TdcCatEstadosDevolucionPedido</h4>
     <hr />
-    <div class="row">
+    <div class="row justify-content-center">
         <div class="col-md-4">
             <form method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -41,6 +41,34 @@
                 </div>
             </form>
         </div>
+
+        <!-- Leyenda -->
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th>Código Estado Devolución</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>A</td>
+                    <td>Aceptada</td>
+                </tr>
+                <tr>
+                    <td>R</td>
+                    <td>Rechazada</td>
+                </tr>
+                <tr>
+                    <td>D1</td>
+                    <td>Devolución en Almacén</td>
+                </tr>
+                <tr>
+                    <td>D2</td>
+                    <td>Devolución Finalizada</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
     <div>

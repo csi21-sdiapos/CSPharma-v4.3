@@ -12,7 +12,7 @@
 
     <h4>TdcCatEstadosEnvioPedido</h4>
     <hr />
-    <div class="row">
+    <div class="row justify-content-center">
         <div class="col-md-4">
             <form method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -42,6 +42,46 @@
                 </div>
             </form>
         </div>
+
+        <!-- Leyenda -->
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th>Código Estado Envío</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>S1</td>
+                    <td>Solicitado</td>
+                </tr>
+                <tr>
+                    <td>R1</td>
+                    <td>Registrado en Almacén</td>
+                </tr>
+                <tr>
+                    <td>P1</td>
+                    <td>En Preparación</td>
+                </tr>
+                <tr>
+                    <td>E1</td>
+                    <td>Enviado Completo</td>
+                </tr>
+                <tr>
+                    <td>E2</td>
+                    <td>Enviado Parcial</td>
+                </tr>
+                <tr>
+                    <td>D</td>
+                    <td>Devuelto</td>
+                </tr>
+                <tr>
+                    <td>R</td>
+                    <td>Recibido en Farmacia</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
     <div>

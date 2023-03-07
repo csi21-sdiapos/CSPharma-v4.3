@@ -12,7 +12,7 @@
 
     <h4>TdcCatEstadosPagoPedido</h4>
     <hr />
-    <div class="row">
+    <div class="row justify-content-center">
         <div class="col-md-4">
             <form method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -42,6 +42,42 @@
                 </div>
             </form>
         </div>
+
+        <!-- Leyenda -->
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th>Código Estado Pago</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>E1</td>
+                    <td>Emitida Factura</td>
+                </tr>
+                <tr>
+                    <td>P</td>
+                    <td>Pagado</td>
+                </tr>
+                <tr>
+                    <td>P2</td>
+                    <td>Pago Fraccionado</td>
+                </tr>
+                <tr>
+                    <td>R</td>
+                    <td>rechazado</td>
+                </tr>
+                <tr>
+                    <td>D1</td>
+                    <td>Emisión Cancelación</td>
+                </tr>
+                <tr>
+                    <td>D2</td>
+                    <td>Pago Devuelto</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
     <div>
