@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace CSPharma_v4._1.Pages.EstadoPedidos
 {
-    [Authorize(Roles = "Employees")]
+    [Authorize]
     public class IndexModel : PageModel
     {
         // A reference to the database context used to query the data.

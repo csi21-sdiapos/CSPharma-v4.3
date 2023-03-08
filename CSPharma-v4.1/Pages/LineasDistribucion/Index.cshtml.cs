@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace CSPharma_v4._1.Pages.LineasDistribucion
 {
-    [Authorize(Roles = "Employees")]
+    [Authorize]
     public class IndexModel : PageModel
     {
         private readonly CSPharma_v4._1_DAL.DataContexts.CspharmaInformacionalContext _context;
